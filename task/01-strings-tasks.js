@@ -69,7 +69,7 @@ function getStringFromTemplate(firstName, lastName){
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    throw new Error('Not implemented');
+		return  value.slice(7,-1);
 }
 
 
@@ -84,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    throw new Error('Not implemented');
+    return value.slice(0,1);
 }
 
 /**
@@ -99,8 +99,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    throw new Error('Not implemented');
-}
+    return value.trim();
+           }
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -114,7 +114,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+	return	value.repeat(count);
 }
 
 /**
@@ -130,7 +130,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+ return str.slice(0,str.indexOf(value))+str.slice(str.indexOf(value)+value.length);
+    
 }
 
 /**
@@ -145,7 +146,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+      return str.slice(1,-1);
 }
 
 
@@ -160,7 +161,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase( );
 }
 
 /**
@@ -170,11 +171,12 @@ function convertToUpperCase(str) {
  * @return {array}
  *
  * @example
- *   'angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com' => ['angus.young@gmail.com', 'brian.johnson@hotmail.com', 'bon.scott@yahoo.com']
+ *   'angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com' =>
+	['angus.young@gmail.com', 'brian.johnson@hotmail.com', 'bon.scott@yahoo.com']
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+   return str.split(';');
 }
 
 /**
@@ -221,7 +223,32 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    var letter;
+    var i;
+    var str_new="";
+    for (i = 0; i < str.length; i++) {
+        letter = str.charCodeAt(i);
+        if ((letter >= 65) && (letter <= 90)) {
+            letter += 13;
+
+            if (letter > 90) {
+                letter -= 26;
+            }
+            str_new += String.fromCharCode(letter);
+        }
+        if ((letter >= 97) && (letter <= 122)) {
+            letter += 13;
+            if (letter > 122) {
+                letter -= 26;
+            }
+            str_new += String.fromCharCode(letter);
+        }
+      if((letter>=32)&&(letter<=47)||(letter===63)){
+       letter = str.charCodeAt(i);
+        str_new += String.fromCharCode(letter);
+      }
+    }
+    return str_new;
 }
 
 /**
@@ -238,7 +265,12 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if((typeof value==="string")||(value instanceof String)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 
@@ -267,8 +299,21 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    var i = 0;
+    var count = 0;
+    var string = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+	'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+	'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+	'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+    for (i = 0; i < string.length; i++) {
+        if (value === string[i]) {
+            return count;
+        }
+        count++;
+        /* else console.log(false);*/
+    }
 }
+
 
 
 module.exports = {
