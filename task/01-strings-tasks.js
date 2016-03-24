@@ -84,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    return value[0];
+    return value[0];/*ololololo*/
 }
 
 /**
@@ -239,7 +239,7 @@ function encodeToRot13(str) {
             if (letter > uppercaseOffsetLastLetter) {
                 letter -= lettersCount;
             }
-            str_new += String.fromCharCode(letter);/*ololololo*/
+            str_new += String.fromCharCode(letter);
         }
         else if ((letter >= lowercaseOffsetFirstLetter) && (letter <= lowercaseOffsetLastLetter)) {
             letter += offset;
