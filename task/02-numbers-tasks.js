@@ -161,11 +161,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a,b,c) {
-    var diag2;
-    var otvet;
-    diag2=Math.pow(a,2)+Math.pow(b,2);
-    otvet=Math.sqrt(Math.pow(c,2)+diag2);
-    return otvet;
+    return  Math.hypot(c,Math.hypot(a,b));    
 }
 
 /**
