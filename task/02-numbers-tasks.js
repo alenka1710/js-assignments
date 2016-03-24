@@ -232,7 +232,8 @@ function toNumber(value, def) {
     var number;
     number = parseInt(value);
     if (isNaN(number))
-        return def;
+	/*console.log*/
+     return def;
     else return number;
 }
 
