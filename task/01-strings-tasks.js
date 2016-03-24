@@ -295,20 +295,8 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    var i = 0;
-    var count = 0;
-    var string = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
-	'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
-	'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
-	'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
-    for (i = 0; i < string.length; i++) {
-        if (value === string[i]) {
-            return count;
+  return  '♣♦♥♠'.indexOf(value.slice(-1))*13 +'A234567891JQK'.indexOf(value[0]);
         }
-        count++;
-        /* else console.log(false);*/
-    }
-}
 
 
 
