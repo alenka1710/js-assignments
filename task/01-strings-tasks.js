@@ -239,7 +239,7 @@ function encodeToRot13(str) {
             if (letter > uppercaseOffsetLastLetter) {
                 letter -= lettersCount;
             }
-            str_new += String.fromCharCode(letter);
+            str_new += String.fromCharCode(letter);/*ololololo*/
         }
         else if ((letter >= lowercaseOffsetFirstLetter) && (letter <= lowercaseOffsetLastLetter)) {
             letter += offset;
