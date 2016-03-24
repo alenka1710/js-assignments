@@ -296,7 +296,7 @@ function isString(value) {
  */
 function getCardId(value) {
   return  '♣♦♥♠'.indexOf(value.slice(-1))*13 +'A234567891JQK'.indexOf(value[0]);
-        }
+}
 
 
 
