@@ -225,32 +225,35 @@ function getRectangleString(width, height) {
 function encodeToRot13(str) {
     var letter;
     var i;
-    var str_new="";
+    var str_new = "";
+    const lettersCount = 26;
+    const offset = 13;
+    const lowercaseOffsetFirstLetter = 'a'.charCodeAt(0);
+    const lowercaseOffsetLastLetter = 'z'.charCodeAt(0);
+    const uppercaseOffsetFirstLetter = 'A'.charCodeAt(0);
+    const uppercaseOffsetLastLetter = 'Z'.charCodeAt(0);
     for (i = 0; i < str.length; i++) {
         letter = str.charCodeAt(i);
-        if ((letter >= 65) && (letter <= 90)) {
-            letter += 13;
-
-            if (letter > 90) {
-                letter -= 26;
+        if ((letter >= uppercaseOffsetFirstLetter) && (letter <= uppercaseOffsetLastLetter)) {
+            letter += offset;
+            if (letter > uppercaseOffsetLastLetter) {
+                letter -= lettersCount;
             }
             str_new += String.fromCharCode(letter);
         }
-        if ((letter >= 97) && (letter <= 122)) {
-            letter += 13;
-            if (letter > 122) {
-                letter -= 26;
+        else if ((letter >= lowercaseOffsetFirstLetter) && (letter <= lowercaseOffsetLastLetter)) {
+            letter += offset;
+            if (letter > lowercaseOffsetLastLetter) {
+                letter -= lettersCount;
             }
             str_new += String.fromCharCode(letter);
+        } else {
+            letter = str.charCodeAt(i);
+            str_new += String.fromCharCode(letter);
         }
-      if((letter>=32)&&(letter<=47)||(letter===63)){
-       letter = str.charCodeAt(i);
-        str_new += String.fromCharCode(letter);
-      }
     }
     return str_new;
 }
-
 /**
  * Returns true if the value is string; otherwise false.
  * @param {string} value
